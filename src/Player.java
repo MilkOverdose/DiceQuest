@@ -22,7 +22,15 @@ public class Player implements Combatant {
         hp += hpGain;
     }
 
-    public int getHp() { return hp; }
-    public int getBaseDmg() { return baseDmg; }
-    public double getCritMultiplier() { return critMultiplier; }
+    public int getHp(){ 
+
+        return hp; }
+
+    public int getBaseDmg(){ 
+        
+        return baseDmg; }
+
+    public double getCritMultiplier(){ 
+        
+        return critMultiplier; }
 }
