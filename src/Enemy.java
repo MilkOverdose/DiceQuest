@@ -1,8 +1,11 @@
 public class Enemy implements Combatant {
-    private int hp = 60;
+    private int hp;
     private int baseDmg;
+    private String name;
 
-    public Enemy(int baseDmg) {
+    public Enemy(String name, int hp, int baseDmg) {
+        this.name = name;
+        this.hp = hp;
         this.baseDmg = baseDmg;
     }
 
@@ -16,9 +19,7 @@ public class Enemy implements Combatant {
         return hp > 0;
     }
 
-    public int attack() {
-        return baseDmg;
-    }
-
+    public int attack() { return baseDmg; }
     public int getHp() { return hp; }
+    public String getName() { return name; }
 }

@@ -4,7 +4,7 @@ public class Boss extends Enemy {
     private Random rand = new Random();
 
     public Boss() {
-        super(0);  
+        super("BOSS", 150, 0);
     }
 
     @Override
@@ -17,6 +17,6 @@ public class Boss extends Enemy {
     }
 
     public void applyBossDebuff(Player player) {
-        player.takeDamage(5);  
+        player.takeDamage(5);
     }
 }
