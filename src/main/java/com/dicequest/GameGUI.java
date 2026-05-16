@@ -1,3 +1,4 @@
+package com.dicequest;
 import javax.swing.*;
 import java.awt.*;
 

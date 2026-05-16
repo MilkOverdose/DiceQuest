@@ -1,3 +1,5 @@
+
+package com.dicequest;
 public class Enemy implements Combatant {
     private int hp;
     private int baseDmg;

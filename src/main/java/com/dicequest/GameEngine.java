@@ -1,3 +1,4 @@
+package com.dicequest;
 import java.util.Random;
 
 public class GameEngine {

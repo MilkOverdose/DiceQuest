@@ -1,3 +1,4 @@
+package com.dicequest;
 public class Player implements Combatant {
     private int hp = 100;
     private int maxHp = 100;
