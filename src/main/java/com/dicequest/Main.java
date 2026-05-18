@@ -15,3 +15,9 @@ public class Main {
             controller.getState().getCurrentEnemy().getName() + " appears!\n");
     }
 }
+
+//Many things still missin, needs better balancing (can only reach floor 8 if really lucky)
+//Needs more buff options for the player
+//Needs more enemy variety
+//Maybe change up the UI more
+//Needs to make it easier for the player aswell

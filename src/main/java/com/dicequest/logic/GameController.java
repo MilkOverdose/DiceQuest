@@ -2,8 +2,8 @@ package com.dicequest.logic;
 
 import com.dicequest.entities.*;
 
-public class GameController {
-    private GameState state;
+public class GameController { //middleman between UI and Logic
+    private GameState state; // basically tells what the UI should display without interacting with swing 
     private GameEngine engine;
     private GameView view;
 

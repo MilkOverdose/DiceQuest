@@ -1,6 +1,6 @@
 package com.dicequest.entities;
 
-public abstract class Entity implements Combatant {
+public abstract class Entity implements Combatant {   //Foundation for all fighters
     protected String name;
     protected int hp;
     protected int maxHp;
@@ -14,7 +14,7 @@ public abstract class Entity implements Combatant {
     }
 
     @Override
-    public void takeDamage(int amount) {
+    public void takeDamage(int amount) { // its in the name, subtracts damage from hp
         hp = Math.max(0, hp - amount);
     }
 

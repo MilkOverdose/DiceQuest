@@ -2,7 +2,7 @@ package com.dicequest.logic;
 
 import com.dicequest.entities.*;
 
-public class GameState {
+public class GameState { //tracks everything, the state of the game even, aintoway
     private int floor;
     private boolean gameOver;
     private boolean playerWon;
@@ -17,7 +17,7 @@ public class GameState {
         this.currentEnemy = spawnEnemy();
     }
 
-    private Enemy spawnEnemy() {
+    private Enemy spawnEnemy() { // spawns the enemy, if divisible by 5 spawns boss instead
         if (floor % 5 == 0) {
             return new Boss();
         }

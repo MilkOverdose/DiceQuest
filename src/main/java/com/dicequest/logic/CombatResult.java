@@ -1,6 +1,6 @@
 package com.dicequest.logic;
 
-public class CombatResult {
+public class CombatResult { // holds result of every turn
     private int roll;
     private boolean playerHit;
     private boolean isCrit;
@@ -9,7 +9,7 @@ public class CombatResult {
     private int enemyDamage;
     private int debuffDamage;
 
-    public String getSummary(String enemyName) {
+    public String getSummary(String enemyName) { //builds readable string of of combat data probably should be in GUI
         StringBuilder sb = new StringBuilder();
         sb.append("You rolled: ").append(roll).append("\n");
 
