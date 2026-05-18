@@ -1,6 +1,7 @@
 com\dicequest\logic\GameController$1.class
 com\dicequest\gui\GameDisplay.class
 com\dicequest\entities\Enemy.class
+com\dicequest\entities\Entity.class
 com\dicequest\gui\GameGUI.class
 com\dicequest\entities\Combatant.class
 com\dicequest\logic\GameView.class

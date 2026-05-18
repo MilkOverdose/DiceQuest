@@ -24,7 +24,7 @@ public class Boss extends Enemy {
 
     public boolean shouldApplyDebuff() {
         turnCount++;
-        return turnCount % 2 == 0; // debuff every other turn
+        return turnCount % 2 == 0;
     }
 
     public int getDebuffDamage() {
