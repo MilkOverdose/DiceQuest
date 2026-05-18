@@ -14,3 +14,4 @@ com\dicequest\logic\GameEngine.class
 com\dicequest\entities\Player.class
 com\dicequest\gui\GameGUI$1.class
 com\dicequest\entities\Boss.class
+com\dicequest\logic\Dice.class

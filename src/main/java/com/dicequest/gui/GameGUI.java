@@ -104,7 +104,7 @@ public class GameGUI {
         scrollPane.setMaximumSize(new Dimension(Integer.MAX_VALUE, 180));
         scrollPane.setBorder(BorderFactory.createLineBorder(GameDisplay.GOLD_DIM, 1));
 
-        // Roll button — no action listener here, set from outside
+
         rollButton = buildRollButton();
 
         // Assemble
@@ -170,7 +170,7 @@ public class GameGUI {
         return button;
     }
 
-    // Getters for GameDisplay to hook into
+    // Getters for GameDisplay
     public JFrame getFrame() { return frame; }
     public JButton getRollButton() { return rollButton; }
     public JProgressBar getPlayerHPBar() { return playerHPBar; }

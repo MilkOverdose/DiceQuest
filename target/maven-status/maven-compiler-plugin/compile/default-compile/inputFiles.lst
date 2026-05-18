@@ -6,6 +6,7 @@ D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\entities\Player.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\GameDisplay.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\GameGUI.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\CombatResult.java
+D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\Dice.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\GameController.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\GameEngine.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\GameState.java

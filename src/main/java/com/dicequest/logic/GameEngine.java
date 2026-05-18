@@ -1,16 +1,15 @@
 package com.dicequest.logic;
 
 import com.dicequest.entities.*;
-import java.util.Random;
+
 
 public class GameEngine {
     private static final int HIT_THRESHOLD = 7;
-    private Random rand = new Random();
     private double enemyDmgMod = 1.0;
 
     public CombatResult processTurn(Player player, Enemy enemy) {
         CombatResult result = new CombatResult();
-        int roll = roll2d6();
+        int roll = Dice.roll2d6();
         result.setRoll(roll);
 
         // Player attacks
@@ -51,10 +50,6 @@ public class GameEngine {
 
     public void scaleDifficulty() {
         enemyDmgMod += 0.15;
-    }
-
-    public int roll2d6() {
-        return (rand.nextInt(6) + 1) + (rand.nextInt(6) + 1);
     }
 
     public double getEnemyDmgMod() { return enemyDmgMod; }
