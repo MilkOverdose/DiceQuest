@@ -3,11 +3,13 @@ package com.dicequest.gui;
 import com.dicequest.entities.*;
 import com.dicequest.logic.*;
 import javax.swing.*;
+import com.dicequest.logic.SaveManager;
 
 public class UIUpdater {
     private final GameWindow window;
     private final GameLogic gameLogic;
     private StringBuilder turnLog = new StringBuilder();
+
     public UIUpdater(GameWindow window, GameLogic gameLogic) {
         this.window = window;
         this.gameLogic = gameLogic;
@@ -24,6 +26,8 @@ public class UIUpdater {
 
             processTurn(activeSelection);
         });
+
+        
 
         updateDisplay(gameLogic.getState());
 
@@ -58,7 +62,6 @@ public class UIUpdater {
                     knight.getResolveStacks(), 5, knight.getDamageReduction() * 100));
         }
     }
-
 
     public void updateBattleLog(String text) {
         turnLog.append(text);
@@ -99,6 +102,7 @@ public class UIUpdater {
                 JOptionPane.YES_NO_OPTION);
 
         if (choice == JOptionPane.YES_OPTION) {
+            SaveManager.deleteSave();
             gameLogic.restart();
             window.setControlsEnabled(true);
         } else {

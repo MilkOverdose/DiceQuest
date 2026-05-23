@@ -10,6 +10,7 @@ public class GameWindow extends JFrame {
     private JLabel enemyLabel;
     private JTextArea battleLog;
     private JLabel playerLabel;
+    
 
     private JTextArea skillDescriptionBox;
 
@@ -43,13 +44,13 @@ public class GameWindow extends JFrame {
 
         mainPanel.add(buildFloorDisplay());
         mainPanel.add(Box.createVerticalStrut(10));
-        mainPanel.add(buildDivider());
+        mainPanel.add(Theme.buildDivider());
         mainPanel.add(Box.createVerticalStrut(15));
         mainPanel.add(buildEnemyPanel());
         mainPanel.add(Box.createVerticalStrut(15));
         mainPanel.add(buildPlayerPanel());
         mainPanel.add(Box.createVerticalStrut(10));
-        mainPanel.add(buildDivider());
+        mainPanel.add(Theme.buildDivider());
         mainPanel.add(Box.createVerticalStrut(10));
         mainPanel.add(buildBattleLog());
         mainPanel.add(Box.createVerticalStrut(12));
@@ -64,8 +65,10 @@ public class GameWindow extends JFrame {
         mainPanel.add(Box.createVerticalStrut(15));
 
         rollButton = new RollButton();
-        rollButton.setAlignmentX(CENTER_ALIGNMENT);
+        mainPanel.add(Box.createVerticalStrut(10));
         mainPanel.add(rollButton);
+        
+        
 
         add(mainPanel);
     }
@@ -155,7 +158,6 @@ public class GameWindow extends JFrame {
         return panel;
     }
 
-    // New Panel Factory Method
     private JPanel buildSkillDescriptionPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Theme.BG_PANEL);
@@ -207,6 +209,8 @@ public class GameWindow extends JFrame {
         });
         return btn;
     }
+
+
 
     private void refreshButtonVisuals() {
         updateSingleButtonColor(btnBasicAttack, "BASIC");
@@ -263,19 +267,13 @@ public class GameWindow extends JFrame {
         skillDescriptionBox.setText(description);
     }
 
-    private JSeparator buildDivider() {
-        JSeparator divider = new JSeparator();
-        divider.setForeground(Theme.GOLD_DIM);
-        divider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 2));
-        return divider;
-    }
-
     public void setControlsEnabled(boolean enabled) {
         rollButton.setEnabled(enabled);
         btnBasicAttack.setEnabled(enabled);
         btnParryRiposte.setEnabled(enabled);
         btnPommelStrike.setEnabled(enabled);
         btnHeadSplitter.setEnabled(enabled);
+        
     }
 
     public String getSelectedActionTag() {
@@ -314,4 +312,6 @@ public class GameWindow extends JFrame {
     public JLabel getPlayerLabel() {
         return playerLabel;
     }
+
+    
 }

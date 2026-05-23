@@ -3,11 +3,12 @@ package com.dicequest.logic;
 import com.dicequest.entities.*;
 
 public class EnemyFactory {
+    public static final int BOSS_FLOOR_INTERVAL = 5;
 
     private EnemyFactory() {}
 
     public static Enemy createForFloor(int floor) {
-        if (floor % 5 == 0) {
+        if (floor % BOSS_FLOOR_INTERVAL == 0) {
             return new Boss();
         }
         String name = getEnemyName(floor);

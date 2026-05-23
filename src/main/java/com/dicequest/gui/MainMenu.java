@@ -1,5 +1,7 @@
 package com.dicequest.gui;
 
+import com.dicequest.logic.SaveManager;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,10 +28,16 @@ public class MainMenu extends JFrame {
         mainPanel.add(Box.createVerticalStrut(10));
         mainPanel.add(buildSubtitle());
         mainPanel.add(Box.createVerticalStrut(60));
-        mainPanel.add(buildDivider());
+        mainPanel.add(Theme.buildDivider());
         mainPanel.add(Box.createVerticalStrut(40));
         mainPanel.add(buildStartButton());
         mainPanel.add(Box.createVerticalStrut(15));
+
+        if (SaveManager.saveExists()) {
+            mainPanel.add(buildContinueButton());
+            mainPanel.add(Box.createVerticalStrut(15));
+        }
+
         mainPanel.add(buildQuitButton());
 
         add(mainPanel);
@@ -51,13 +59,6 @@ public class MainMenu extends JFrame {
         return subtitle;
     }
 
-    private JSeparator buildDivider() {
-        JSeparator divider = new JSeparator();
-        divider.setForeground(Theme.GOLD_DIM);
-        divider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 2));
-        return divider;
-    }
-
     private MenuButton buildStartButton() {
         MenuButton startButton = new MenuButton("START GAME");
         startButton.addActionListener(e -> {
@@ -67,9 +68,49 @@ public class MainMenu extends JFrame {
         return startButton;
     }
 
+    private MenuButton buildContinueButton() {
+        MenuButton continueButton = new MenuButton("CONTINUE");
+        continueButton.addActionListener(e -> {
+            try {
+                SaveManager.SaveData save = SaveManager.load();
+                dispose();
+                launchFromSave(save);
+            } catch (SaveManager.SaveCorruptException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Save file is corrupt and cannot be loaded.\n" + ex.getMessage(),
+                        "Load Failed",
+                        JOptionPane.ERROR_MESSAGE);
+                SaveManager.deleteSave();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Failed to load save: " + ex.getMessage(),
+                        "Load Failed",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+        return continueButton;
+    }
+
     private MenuButton buildQuitButton() {
         MenuButton quitButton = new MenuButton("QUIT");
         quitButton.addActionListener(e -> System.exit(0));
         return quitButton;
+    }
+
+    private void launchFromSave(SaveManager.SaveData save) {
+        try {
+            com.dicequest.logic.GameLogic gameLogic = new com.dicequest.logic.GameLogic(save);
+            GameWindow window = new GameWindow();
+            UIUpdater updater = new UIUpdater(window, gameLogic);
+            gameLogic.setScreen(updater);
+            updater.updateDisplay(gameLogic.getState());
+            updater.updateBattleLog("Welcome back! Floor " + save.floor() + " — A "
+                    + gameLogic.getState().getCurrentEnemy().getName() + " appears!\n");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Failed to launch game: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

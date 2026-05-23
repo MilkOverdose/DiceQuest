@@ -1,6 +1,4 @@
 package com.dicequest.gui;
-
-import com.dicequest.entities.*;
 import com.dicequest.logic.GameLogic;
 
 import javax.swing.*;
@@ -33,11 +31,9 @@ public class ClassSelection extends JFrame {
         title.setForeground(Theme.GOLD);
         title.setAlignmentX(CENTER_ALIGNMENT);
 
-        JSeparator divider = buildDivider();
-
         headerPanel.add(title);
         headerPanel.add(Box.createVerticalStrut(10));
-        headerPanel.add(divider);
+        headerPanel.add(Theme.buildDivider());
 
         String knightSkillsDescription = """
             📊  RESOLVE STACKS
@@ -46,24 +42,24 @@ public class ClassSelection extends JFrame {
             • PASSIVE: Grants +5% Damage Reduction per stack.
             • SAFETY:  At 5 stacks, lethal damage is blocked,
                        resetting stacks to 0 and setting HP to 10.
-            
+
             ⚔️  BASIC ATTACK
             ==============================================
             • EFFECT:  Hits automatically for 100% Base Dmg.
-            
+
             🛡️  PARRY & RIPOSTE
             ==============================================
             • STANCE:  Deflects enemy damage.
             • BONUS:   Triggers a powerful counter attack
                        and generates +1 Resolve Stack.
-            
+
             🔨  POMMEL STRIKE
             ==============================================
             • COST:    Consumes 2 Resolve Stacks.
-            • EFFECT:  Hits STUNS your target.
+            • EFFECT:  Hits and STUNS your target.
             • PASSIVE: Gives 5% permanent damage reduction
                        for the battle up to 25%.
-            
+
             🪓  HEAD SPLITTER
             ==============================================
             • ACC:     Success scales up with Resolve Stacks.
@@ -74,7 +70,7 @@ public class ClassSelection extends JFrame {
         JPanel knightCard = buildClassCard(
             "KNIGHT",
             "HP: 150  |  BASE DMG: 30  |  AGILITY: 30",
-            knightSkillsDescription.stripIndent(),
+            knightSkillsDescription,
             () -> launchGame()
         );
 
@@ -130,20 +126,13 @@ public class ClassSelection extends JFrame {
         return card;
     }
 
-    private JSeparator buildDivider() {
-        JSeparator divider = new JSeparator();
-        divider.setForeground(Theme.GOLD_DIM);
-        divider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 2));
-        return divider;
-    }
-
     private void launchGame() {
-    GameLogic gameLogic = new GameLogic(new Knight());
-    GameWindow window = new GameWindow();
-    UIUpdater updater = new UIUpdater(window, gameLogic);
-    gameLogic.setScreen(updater);
-    updater.updateDisplay(gameLogic.getState());
-    updater.updateBattleLog("Floor 1 — A " +
-        gameLogic.getState().getCurrentEnemy().getName() + " appears!\n");
-}
+        GameLogic gameLogic = new GameLogic();
+        GameWindow window = new GameWindow();
+        UIUpdater updater = new UIUpdater(window, gameLogic);
+        gameLogic.setScreen(updater);
+        updater.updateDisplay(gameLogic.getState());
+        updater.updateBattleLog("Floor 1 — A " +
+            gameLogic.getState().getCurrentEnemy().getName() + " appears!\n");
+    }
 }
