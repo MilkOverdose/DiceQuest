@@ -1,10 +1,9 @@
 package com.dicequest.entities;
 
-
 import com.dicequest.logic.Dice;
 
-public class Boss extends Enemy { // boss, every 5th floor does its own rolls and has a debuff
-    private static final String BOSS_NAME = "BOSS";
+public class Boss extends Enemy {
+    private static final String BOSS_NAME = "Boss";
     private static final int BOSS_HP = 150;
     private static final int DEBUFF_DAMAGE = 5;
     private int turnCount = 0;
@@ -15,19 +14,15 @@ public class Boss extends Enemy { // boss, every 5th floor does its own rolls an
 
     @Override
     public int attack() {
-        return rollBossDamage();
+        return Dice.roll2d6();
     }
 
-   public int rollBossDamage() {
-    return Dice.roll2d6();
-    }   
-
-    public boolean shouldApplyDebuff() {
+    @Override
+    public EnemyTurnResult takeTurn() {
         turnCount++;
-        return turnCount % 2 == 0;
-    }
-
-    public int getDebuffDamage() { //debuff is just extra 5 damage for now
-        return DEBUFF_DAMAGE;
+        int damage = attack();
+        boolean debuffed = turnCount % 2 == 0;
+        int debuffDamage = debuffed ? DEBUFF_DAMAGE : 0;
+        return new EnemyTurnResult(damage, debuffDamage, debuffed);
     }
 }

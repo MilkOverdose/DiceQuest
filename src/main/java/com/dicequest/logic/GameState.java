@@ -2,11 +2,11 @@ package com.dicequest.logic;
 
 import com.dicequest.entities.*;
 
-public class GameState { //tracks everything, the state of the game even, aintoway
+public class GameState {
     private int floor;
     private boolean gameOver;
     private boolean playerWon;
-    private Player player;
+    private final Player player;
     private Enemy currentEnemy;
 
     public GameState(Player player) {
@@ -14,30 +14,19 @@ public class GameState { //tracks everything, the state of the game even, aintow
         this.gameOver = false;
         this.playerWon = false;
         this.player = player;
-        this.currentEnemy = spawnEnemy();
-    }
-
-    private Enemy spawnEnemy() { // spawns the enemy, if divisible by 5 spawns boss instead
-        if (floor % 5 == 0) {
-            return new Boss();
-        }
-        return new Enemy("Goblin", 60 + (floor * 5), 8 + (floor * 2));
+        this.currentEnemy = EnemyFactory.createForFloor(floor);
     }
 
     public void advanceFloor() {
         floor++;
-        currentEnemy = spawnEnemy();
+        currentEnemy = EnemyFactory.createForFloor(floor);
     }
 
-    public void setPlayerDefeated() {
+    public void markPlayerDefeated() {
         this.gameOver = true;
         this.playerWon = false;
     }
 
-    public void setPlayerVictorious() {
-        this.gameOver = false;
-        this.playerWon = false;
-    }
 
     public boolean isGameOver() { return gameOver; }
     public boolean isPlayerWon() { return playerWon; }
