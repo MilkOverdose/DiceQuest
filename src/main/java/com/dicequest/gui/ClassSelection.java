@@ -69,7 +69,7 @@ public class ClassSelection extends JFrame {
 
         JPanel knightCard = buildClassCard(
             "KNIGHT",
-            "HP: 150  |  BASE DMG: 30  |  AGILITY: 30",
+            "HP: 150  |  BASE DMG: 20  |  AGILITY: 30",
             knightSkillsDescription,
             () -> launchGame()
         );
