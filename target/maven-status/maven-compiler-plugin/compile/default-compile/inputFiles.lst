@@ -8,7 +8,6 @@ D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\GameWindow.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\MainMenu.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\MenuButton.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\RollButton.java
-D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\SaveManager.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\Theme.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\gui\UIUpdater.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\Dice.java
@@ -16,4 +15,5 @@ D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\EnemyFactory.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\GameLogic.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\GameState.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\RewardType.java
+D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\logic\SaveManager.java
 D:\schoo\PROJEC\DiceQuest\src\main\java\com\dicequest\Main.java
